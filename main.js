@@ -12,6 +12,7 @@ function createWindow () {
     transparent: false,   // 在Win中配合毛玻璃需要关闭自身纯透明
     backgroundColor: '#00000000', // 窗口底色设为空
     backgroundMaterial: 'acrylic', // 启用 Win11 原生毛玻璃材质！
+    icon: path.join(__dirname, 'icon.png'),
     alwaysOnTop: false,   // 默认不置顶
     resizable: false,     // 固定大小，避免误触改变形变
     webPreferences: {

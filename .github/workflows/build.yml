@@ -25,7 +25,7 @@ jobs:
       run: npm install
       
     - name: 取代本地环境并在这台云端编译机上打包 EXE
-      run: npx electron-packager . countdownreminder --platform=win32 --arch=x64 --out=dist --asar --overwrite
+      run: npx electron-packager . countdownreminder --platform=win32 --arch=x64 --icon=icon.ico --out=dist --asar --overwrite
       
     - name: 将打包好的所有核心文件打包成 ZIP 以便下载
       run: Compress-Archive -Path dist\countdownreminder-win32-x64 -DestinationPath countdownreminder-win.zip
