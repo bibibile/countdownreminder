@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>订阅提醒</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="一个简单的日期到期提醒工具，帮助您有效管理物品和事件日期。">
+</head>
+<body>
+    <div class="glass-container drag-area">
+        <div class="window-controls no-drag">
+            <button id="pin-btn" class="control-btn" title="固定在最顶层">📍</button>
+            <button id="close-btn" class="control-btn" title="退出应用">×</button>
+        </div>
+        <header style="-webkit-app-region: drag; cursor: grab;">
+            <h1>订阅提醒</h1>
+            <p>👉 按住这里可以拖拽移动位置</p>
+        </header>
+
+        <div id="form-container" class="form-container collapsed no-drag">
+            <form id="reminder-form" class="input-section">
+                <div class="input-group">
+                    <input type="text" id="item-name" placeholder="请输入订阅项目名称" required>
+                </div>
+                <div class="input-group" style="margin-bottom: 2px;">
+                    <input type="text" id="item-desc" placeholder="详细事项说明（选填）">
+                </div>
+                <div class="input-group">
+                    <input type="date" id="expiry-date" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="cancel-btn" id="cancel-add-btn">取消</button>
+                    <button type="submit" class="add-btn">保存并添加</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="list-section no-drag">
+            <div class="section-header">
+                <h2>提醒列表</h2>
+                <button id="show-form-btn" class="icon-add-btn" title="新建提醒">+</button>
+            </div>
+            <div id="reminder-list" class="reminder-list">
+                <!-- 动态生成的提醒项会在这里 -->
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
