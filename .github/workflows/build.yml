@@ -1,0 +1,40 @@
+name: Build and Release EXE
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    permissions:
+      contents: write # 给发布Release的权限
+    
+    steps:
+    - name: 下拉源代码
+      uses: actions/checkout@v3
+      
+    - name: 配置 Node.js 环境
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+        
+    - name: 安装项目依赖包
+      run: npm install
+      
+    - name: 取代本地环境并在这台云端编译机上打包 EXE
+      run: npx electron-packager . countdownreminder --platform=win32 --arch=x64 --out=dist --asar --overwrite
+      
+    - name: 将打包好的所有核心文件打包成 ZIP 以便下载
+      run: Compress-Archive -Path dist\countdownreminder-win32-x64 -DestinationPath countdownreminder-win.zip
+      
+    - name: 自动把安装包发给 GitHub Releases
+      uses: softprops/action-gh-release@v1
+      with:
+        files: countdownreminder-win.zip
+        name: Countdown Reminder (自动打包版)
+        tag_name: Build-${{ github.run_number }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
