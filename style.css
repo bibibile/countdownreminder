@@ -94,6 +94,46 @@ header p {
     color: #777;
 }
 
+.version-badge {
+    font-size: 13px;
+    font-weight: 600;
+    background: linear-gradient(120deg, rgba(132, 250, 176, 0.4) 0%, rgba(143, 211, 244, 0.4) 100%);
+    color: #444;
+    padding: 3px 8px;
+    border-radius: 8px;
+    vertical-align: middle;
+    margin-left: 5px;
+    text-shadow: none;
+    -webkit-text-fill-color: #444;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    transition: filter 0.2s;
+}
+
+.version-badge:hover {
+    filter: brightness(0.95);
+}
+
+.footer-credit {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 5px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+}
+
+.footer-credit a {
+    color: #888;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-credit a:hover {
+    color: #333;
+}
+
 .input-section {
     display: flex;
     flex-direction: column;

@@ -23,6 +23,12 @@ function createWindow () {
 
   mainWindow.loadFile('index.html')
 
+  // ---------- OPEN LINKS IN DEFAULT BROWSER -----------
+  mainWindow.webContents.setWindowOpenHandler(({ url }) => {
+    require('electron').shell.openExternal(url);
+    return { action: 'deny' };
+  });
+
   // 失去焦点时（点击桌面其他地方）变为半透明
   mainWindow.on('blur', () => {
     mainWindow.setOpacity(0.5);
