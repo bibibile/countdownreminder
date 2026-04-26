@@ -14,10 +14,10 @@ jobs:
     
     steps:
     - name: 下拉源代码
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       
     - name: 配置 Node.js 环境
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: 18
         
@@ -31,7 +31,7 @@ jobs:
       run: Compress-Archive -Path dist\countdownreminder-win32-x64 -DestinationPath countdownreminder-win.zip
       
     - name: 自动把安装包发给 GitHub Releases
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v2
       with:
         files: countdownreminder-win.zip
         name: Countdown Reminder (自动打包版)
